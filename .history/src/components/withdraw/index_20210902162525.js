@@ -27,7 +27,7 @@ export const WithdrawComponent = () => {
         value={inputValue}
       />
       <Message>{responseMessage}</Message>
-      <Message>R$ {customerBalance}</Message>
+      <Message>R{customerBalance}</Message>
     </Container>
   );
 };

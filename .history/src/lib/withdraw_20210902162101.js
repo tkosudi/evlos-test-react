@@ -22,22 +22,27 @@ const billsArray = Object.keys(bills)
   .reverse()
   .map((item) => parseInt(item));
 
-let customerBalance = 122.5;
+let costomerBalance = 122.5;
 
-export const getCustomerBalance = () => {
-  return customerBalance;
-};
+export const getCustomerBalance = (costomerBalance) => {
+  return costomerBalance
+}
 
 export const withdraw = (
   valorSaque,
   inputValue,
   withdrawBills = responseWithdrawBills
 ) => {
+  console.log(bills);
+  // console.log("withdrawBills ==> ", withdrawBills);
+  // console.log("bills ==> ", bills);
+  // console.log("Costumer Balance ==> ", costomerBalance);
+
   if (inputValue <= 1) {
     return "Valor inválido! Saques à partir de R$1,00.";
   }
 
-  if (valorSaque > customerBalance) {
+  if (valorSaque > costomerBalance) {
     return "Você não possui saldo para sacar este valor!";
   }
 
@@ -69,7 +74,7 @@ export const withdraw = (
     if (bills[billsArray[i]] > 0 && valorSaque >= billsArray[i]) {
       valorSaque -= billsArray[i];
       withdrawBills[billsArray[i]]++;
-      customerBalance -= billsArray[i];
+      costomerBalance -= billsArray[i];
       bills[billsArray[i]]--;
 
       return withdraw(valorSaque, withdrawBills);

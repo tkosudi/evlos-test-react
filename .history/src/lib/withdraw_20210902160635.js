@@ -22,22 +22,22 @@ const billsArray = Object.keys(bills)
   .reverse()
   .map((item) => parseInt(item));
 
-let customerBalance = 122.5;
-
-export const getCustomerBalance = () => {
-  return customerBalance;
-};
+let costumerBalance = 122.5;
 
 export const withdraw = (
   valorSaque,
   inputValue,
   withdrawBills = responseWithdrawBills
 ) => {
+  // console.log("withdrawBills ==> ", withdrawBills);
+  // console.log("bills ==> ", bills);
+  // console.log("Costumer Balance ==> ", costumerBalance);
+
   if (inputValue <= 1) {
     return "Valor inválido! Saques à partir de R$1,00.";
   }
 
-  if (valorSaque > customerBalance) {
+  if (valorSaque > costumerBalance) {
     return "Você não possui saldo para sacar este valor!";
   }
 
@@ -51,6 +51,9 @@ export const withdraw = (
       response += `${withdrawBills[billValues[i]]} nota de R$${
         billValues[i]
       },00, `;
+      console.log(costumerBalance);
+      costumerBalance -= billValues[i];
+      console.log(billValues[i]);
     }
 
     let res = response.slice(0, -2) + ".";
@@ -64,14 +67,10 @@ export const withdraw = (
   }
 
   for (let i = 0; i < billsArray.length; i++) {
-    console.log(billsArray[i]);
-    console.log(billsArray[i] > 0);
-    if (bills[billsArray[i]] > 0 && valorSaque >= billsArray[i]) {
+    if ((billsArray[i] > 0) & (valorSaque >= billsArray[i])) {
       valorSaque -= billsArray[i];
       withdrawBills[billsArray[i]]++;
-      customerBalance -= billsArray[i];
       bills[billsArray[i]]--;
-
       return withdraw(valorSaque, withdrawBills);
     }
   }

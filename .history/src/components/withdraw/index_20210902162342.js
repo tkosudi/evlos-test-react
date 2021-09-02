@@ -11,7 +11,7 @@ export const WithdrawComponent = () => {
 
   const buttonClick = (valorSaque, inputValue) => {
     const response = withdraw(valorSaque, inputValue);
-    setCustomerBalance(getCustomerBalance());
+    setCustomerBalance
     setResponseMessage(response);
     setInputValue("");
   };
@@ -27,7 +27,7 @@ export const WithdrawComponent = () => {
         value={inputValue}
       />
       <Message>{responseMessage}</Message>
-      <Message>R$ {customerBalance}</Message>
+      <Message>{customerBalance}</Message>
     </Container>
   );
 };

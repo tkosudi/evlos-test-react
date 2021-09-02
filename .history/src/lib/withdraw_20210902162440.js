@@ -24,7 +24,7 @@ const billsArray = Object.keys(bills)
 
 let customerBalance = 122.5;
 
-export const getCustomerBalance = () => {
+export const getCustomerBalance = (customerBalance) => {
   return customerBalance;
 };
 
@@ -33,6 +33,7 @@ export const withdraw = (
   inputValue,
   withdrawBills = responseWithdrawBills
 ) => {
+
   if (inputValue <= 1) {
     return "Valor inválido! Saques à partir de R$1,00.";
   }
