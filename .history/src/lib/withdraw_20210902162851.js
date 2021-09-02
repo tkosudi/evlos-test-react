@@ -69,6 +69,7 @@ export const withdraw = (
       withdrawBills[billsArray[i]]++;
       customerBalance -= billsArray[i];
       bills[billsArray[i]]--;
+
       return withdraw(valorSaque, withdrawBills);
     }
   }
