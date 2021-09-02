@@ -64,11 +64,13 @@ export const withdraw = (
   }
 
   for (let i = 0; i < billsArray.length; i++) {
+    console.log(billsArray[i]);
     if (bills[billsArray[i]] > 0 && valorSaque >= billsArray[i]) {
       valorSaque -= billsArray[i];
       withdrawBills[billsArray[i]]++;
       customerBalance -= billsArray[i];
       bills[billsArray[i]]--;
+
       return withdraw(valorSaque, withdrawBills);
     }
   }
